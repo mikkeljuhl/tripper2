@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the organization that owns the user.
+     */
+    public function organization()
+    {
+        return $this->belongsTo('App\Organization');
+    }
 }

@@ -14,10 +14,16 @@ class Organization extends Migration
     public function up()
     {
         Schema::create('organizations', function (Blueprint $table) {
-            $table->increments('organization')->unique();
+            $table->increments('id')->unique();
             $table->string('name')->unique();
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('organization_id')->default(0);
+            $table->foreign('organization_id')->references('id')->on('organizations');
+        });
+
     }
 
     /**
@@ -27,6 +33,10 @@ class Organization extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organizatoins');
+        Schema::dropIfExists('organizations');
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('organization_id');
+        });
     }
 }
