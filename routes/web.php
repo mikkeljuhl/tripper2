@@ -18,3 +18,15 @@ Route::group(['namespace' => 'Organization'], function () {
 });
 
 
+Route::group(['namespace' => 'Calendar'], function () {
+    Route::get('/calendars', 'CalendarController@index')->name('index_calendar');
+    Route::get('/calendars/{year}/{month}', 'CalendarController@show')->name('show_calendar');
+    Route::post('/calendars', 'CalendarController@store')->name('store_calendar');
+
+
+
+
+    Route::get('/calendars/countries', 'CountryController@index')->name('index_country');
+    Route::post('/calendars/countries', 'CountryController@store')->name('store_country');
+
+});

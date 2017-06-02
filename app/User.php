@@ -34,4 +34,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Organization');
     }
+
+    public function calendars() {
+        return $this->hasMany('App\Calendar');
+    }
 }

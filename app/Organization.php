@@ -10,4 +10,10 @@ class Organization extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public function countries()
+    {
+        return $this->hasMany('App\Country');
+    }
+
 }
